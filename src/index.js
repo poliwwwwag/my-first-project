@@ -12,8 +12,17 @@ function search(event) {
     let temperatureElement = document.querySelector(
       ".current-temperature-value"
     );
+    let descriptionElement = document.querySelector("#description");
+    let humidityElement = document.querySelector("#humidity");
+    let windElement = document.querySelector("#wind");
+    console.log(response.data);
+
+    humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+    windElement.innerHTML = `${response.data.wind.speed} km/h`;
     temperatureElement.innerHTML = `${temperature}°C`;
+    descriptionElement.innerHTML = response.data.condition.description;
   }
+
   let apiKey = "6at4f0f9a89509f5o275b1ea32cf6f39";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInputElement.value}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
