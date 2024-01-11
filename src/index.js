@@ -15,6 +15,14 @@ function search(event) {
     let descriptionElement = document.querySelector("#description");
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind");
+
+    let iconElement = document.querySelector("#icon");
+
+    iconElement.innerHTML = `<img
+        src=${response.data.condition.icon_url}
+        alt="weather icon"
+        class="current-temperature-icon"
+      />`;
     console.log(response.data);
 
     humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
